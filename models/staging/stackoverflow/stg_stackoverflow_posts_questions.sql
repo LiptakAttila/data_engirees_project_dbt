@@ -30,7 +30,7 @@ final as (
         score,
         tags,
         view_count,
-        current_timestamp() as load_datetime
+        DATETIME_ADD(current_timestamp(), INTERVAL -EXTRACT(SECOND FROM current_timestamp()) SECOND) as load_datetime
 
     from source_stackowerflow
 

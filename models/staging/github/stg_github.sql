@@ -28,7 +28,7 @@ final as (
         org.avatar_url as org_avatar_url,
         org.url as org_url,
         created_at as created_at_datertime_utc,
-        current_timestamp() as load_datetime,
+        DATETIME_ADD(current_timestamp(), INTERVAL -EXTRACT(SECOND FROM current_timestamp()) SECOND) as load_datetime,
         id,
         other
 
