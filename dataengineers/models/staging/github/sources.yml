@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: github
+    database: githubarchive  
+    schema: day  
+    tables:
+      - name: day
+        identifier: "2022*"
+
+
+

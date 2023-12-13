@@ -1,0 +1,27 @@
+
+version: 2
+
+models:
+  - name: stg_stackoverflow_posts_answers
+    description: "stg_stackoverflow_posts_answers introduction"
+    columns:
+
+      - name: _pk
+        data_type: int64
+        description: "The primary key of the table"
+        tests:
+          - unique
+          - not null
+
+
+  - name: stg_stackoverflow_posts_questions
+    description: "stg_stackoverflow_posts_questions introduction"
+    columns:
+
+      - name: _pk
+        data_type: int64
+        description: "The primary key of the table"
+        tests:
+          - unique
+          - not null
+

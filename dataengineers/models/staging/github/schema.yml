@@ -1,0 +1,45 @@
+
+version: 2
+
+models:
+  - name: stg_github
+    description: "My stg_github dataset"
+    columns:
+      - name: _pk
+        data_type: string
+        description: "The primary key for this table"
+        tests:
+          - not_null
+
+
+
+      - name: type
+        data_type: string
+        description: "The type of this table"
+        tests:
+          - not_null
+
+
+      - name: is_public
+        data_type: boolean
+        description: "Is it public?"
+        tests:
+          - not_null
+
+      - name: payload
+        data_type: string
+        description: "The payload of this table"
+        tests:
+          - not_null
+
+      - name: created_at_datertime_utc
+        data_type: timestamp
+        description: "The creation day of this table"
+        tests:
+          - not_null
+
+      - name: id
+        data_type: string
+        description: "The id of this table"
+        tests:
+          - not_null

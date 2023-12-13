@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: stg_companies
+    description: "My stg_companies dataset"
+    columns:
+      - name: _pk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
