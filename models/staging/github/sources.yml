@@ -6,7 +6,7 @@ sources:
     schema: day  
     tables:
       - name: day
-        identifier: "2022*"
+        identifier: "2023*"
 
 
 

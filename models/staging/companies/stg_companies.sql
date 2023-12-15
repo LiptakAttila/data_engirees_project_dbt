@@ -22,6 +22,7 @@ final as (
             when Open_source_available = 'No' then false
         end as is_open_source_available,
         current_datetime() as created_at_datetime_utc,
+        DATETIME_ADD(current_timestamp(), INTERVAL -EXTRACT(SECOND FROM current_timestamp()) SECOND) as load_datetime_utc
 
     from source_company
 

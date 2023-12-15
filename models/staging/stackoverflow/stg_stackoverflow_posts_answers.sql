@@ -1,8 +1,8 @@
 with source_stackowerflow as (
 
-    select * from {{ source('stackoverflow', 'questions') }}
+    select * from {{ source('stackoverflow', 'answers') }}
 
-    where extract(year from creation_date) = 2022
+    where extract(year from creation_date) = 2023
 
 ),
 
@@ -30,7 +30,7 @@ final as (
         score,
         tags,
         view_count,
-        current_timestamp() as load_datetime
+        DATETIME_ADD(current_timestamp(), INTERVAL -EXTRACT(SECOND FROM current_timestamp()) SECOND) as load_datetime_utc
 
     from source_stackowerflow
 

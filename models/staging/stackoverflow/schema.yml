@@ -11,7 +11,7 @@ models:
         description: "The primary key of the table"
         tests:
           - unique
-          - not null
+          - not_null
 
 
   - name: stg_stackoverflow_posts_questions
@@ -23,5 +23,5 @@ models:
         description: "The primary key of the table"
         tests:
           - unique
-          - not null
+          - not_null
 
