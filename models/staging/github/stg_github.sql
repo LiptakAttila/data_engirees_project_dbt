@@ -3,7 +3,7 @@ with source_github as (
     select * from {{ source('github', 'day') }}
 
 
-    where _table_suffix like '1224'
+    /*where _table_suffix like '1224'*/
 ),
 
 final as (

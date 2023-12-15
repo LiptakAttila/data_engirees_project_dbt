@@ -2,7 +2,7 @@ with source_stackowerflow as (
 
     select * from {{ source('stackoverflow', 'answers') }}
 
-    where extract(year from creation_date) = 2022
+    where extract(year from creation_date) = 2023
 
 ),
 
