@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: int_companies
+    description: "My int_companies dataset"
+    columns:
+      - name: _pk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null

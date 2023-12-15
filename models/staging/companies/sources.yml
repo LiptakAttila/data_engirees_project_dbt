@@ -6,7 +6,7 @@ sources:
     schema: raw_airbyte_dataset  
     tables:
       - name: table
-        identifier: "v3"
+        identifier: "v1"
 
 
 
