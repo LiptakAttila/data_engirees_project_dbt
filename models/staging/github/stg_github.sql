@@ -27,8 +27,7 @@ final as (
         org.gravatar_id as org_gravatar_id,
         org.avatar_url as org_avatar_url,
         org.url as org_url,
-        created_at as created_at_datertime_utc,
-        DATETIME_ADD(current_timestamp(), INTERVAL -EXTRACT(SECOND FROM current_timestamp()) SECOND) as load_datetime_utc,
+        DATETIME_ADD(current_timestamp(), INTERVAL -EXTRACT(SECOND FROM current_timestamp()) SECOND) as created_at_datetime_utc,
         id,
         other
 

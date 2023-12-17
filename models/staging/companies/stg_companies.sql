@@ -9,7 +9,7 @@ final as (
 
     select
  
-        row_number() over(order by Organization DESC) as _pk,
+        row_number() over(order by Organization DESC) as company_pk,
         Organization as organization,
         Repository_account as repository_account,
         Repository_name as repository_name,
@@ -27,4 +27,6 @@ final as (
 
 )
 
-select * from final
+select *, 
+    concat(repository_account, organization) as company_sk
+from final
