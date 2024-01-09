@@ -1,4 +1,4 @@
-with source_stackowerflow as (
+with source_stackoverflow as (
 
     select * from {{ source('stackoverflow', 'answers') }}
 
@@ -32,7 +32,7 @@ final as (
         view_count,
         DATETIME_ADD(current_timestamp(), INTERVAL -EXTRACT(SECOND FROM current_timestamp()) SECOND) as load_datetime_utc
 
-    from source_stackowerflow
+    from source_stackoverflow
 
 )
 
