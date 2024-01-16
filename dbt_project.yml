@@ -42,4 +42,10 @@ models:
       stackoverflow:
         +materialized: view
     intermediate:
-      git
+      companies:
+        +materialized: table
+    mart:
+      github:
+        +materialized: table
+      stackoverflow:
+        +materialized: table

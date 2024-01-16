@@ -6,8 +6,8 @@ sources:
     schema: stackoverflow  
     tables:
       - name: answers
-        identifier: posts_answers
+        identifier: "posts_answers"
 
       - name: questions
-        identifier: posts_questions
+        identifier: "posts_questions"
 

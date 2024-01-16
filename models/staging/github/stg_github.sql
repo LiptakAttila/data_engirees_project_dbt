@@ -3,7 +3,7 @@ with source_github as (
     select * from {{ source('github', 'day') }}
 
 
-    where _table_suffix like '16'
+    where _table_suffix between '0101' and '0331'
 ),
 
 final as (
@@ -27,7 +27,7 @@ final as (
         org.gravatar_id as org_gravatar_id,
         org.avatar_url as org_avatar_url,
         org.url as org_url,
-        DATETIME_ADD(current_timestamp(), INTERVAL -EXTRACT(SECOND FROM current_timestamp()) SECOND) as created_at_datetime_utc,
+        created_at as created_at_datetime_utc,
         id,
         other
 

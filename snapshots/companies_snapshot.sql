@@ -3,9 +3,10 @@
     {{
         config(
             target_schema='snapshots',
-            strategy='timestamp',
+            strategy='check',
             unique_key='company_sk',
-            updated_at='created_at_datetime_utc',
+            check_cols=['company_sk', 'repository_account', 'repository_name', 'tags'],
+            invalidate_hard_deletes=True,
         )
 
     }}
@@ -13,3 +14,4 @@
 select * from {{ ref("stg_companies")}}
 
 {% endsnapshot %}
+

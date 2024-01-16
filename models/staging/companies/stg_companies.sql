@@ -27,6 +27,8 @@ final as (
 
 )
 
-select *, 
-    concat(repository_account, organization) as company_sk
+select *,
+        {{ dbt_utils.generate_surrogate_key([
+            'Organization'
+        ]) }} as company_sk
 from final

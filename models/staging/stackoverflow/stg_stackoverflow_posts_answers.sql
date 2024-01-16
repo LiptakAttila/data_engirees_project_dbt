@@ -2,7 +2,7 @@ with source_stackoverflow as (
 
     select * from {{ source('stackoverflow', 'answers') }}
 
-    where extract(year from creation_date) = 2023
+    where extract(year from creation_date) = 2022
 
 ),
 
@@ -33,6 +33,8 @@ final as (
         DATETIME_ADD(current_timestamp(), INTERVAL -EXTRACT(SECOND FROM current_timestamp()) SECOND) as load_datetime_utc
 
     from source_stackoverflow
+
+    where tags is not null
 
 )
 

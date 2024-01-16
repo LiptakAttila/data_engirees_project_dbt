@@ -13,7 +13,7 @@ WITH stg_github AS (
     
     {% if is_incremental() %}
 
-    WHERE created_at_datetime_utc > (SELECT max(created_at_datetime_utc) FROM {{ this }})
+        WHERE created_at_datetime_utc > (SELECT max(created_at_datetime_utc) FROM {{ this }})
 
     {% endif %}
 ),
@@ -42,10 +42,14 @@ final AS (
         git.event_id,
         git.type,
         git.created_at_datetime_utc,
+        com.organization,
         com.repository_account
+
     FROM github AS git
     JOIN {{ ref('stg_companies')}} AS com
     ON com.repository_account = git.repository_account_git
+    AND (
+    com.repository_name = git.repository_name_git OR com.repository_name is null)
 )
 
 SELECT * FROM final
