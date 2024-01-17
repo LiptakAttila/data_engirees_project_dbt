@@ -7,6 +7,7 @@ WITH time_granularity AS (
     organization,
     repository_account_git,
     COALESCE(repository_name_git, repository_account_git) AS repository_name,
+    date_trunc(DATE(created_at_datetime_utc), MONTH) as first_day_of_month,
     COUNT(DISTINCT event_id) AS event_count,
     COUNT(DISTINCT user_id) AS user_count,
     COUNT(DISTINCT CASE WHEN type = 'IssuesEvent' THEN event_id END) AS issues_count,
@@ -20,9 +21,10 @@ WITH time_granularity AS (
     COUNT(DISTINCT CASE WHEN type = 'ForkEvent' THEN event_id END) AS fork_count,
     COUNT(DISTINCT CASE WHEN type = 'PushEvent' THEN event_id END) AS push_count,
     COUNT(DISTINCT CASE WHEN type = 'CommitCommentEvent' THEN event_id END) AS commit_comment_count,
-    COUNT(DISTINCT event_id) AS total_event_count
+    COUNT(DISTINCT event_id) AS total_event_count,
+
   FROM {{ ref('int_github')}}
-  GROUP BY 1, 2, 3, 4, 5, 6
+  GROUP BY 1, 2, 3, 4, 5, 6, 7
 )
 
 SELECT
@@ -36,6 +38,7 @@ SELECT
   organization,
   repository_account_git,
   repository_name,
+  first_day_of_month,
   SUM(event_count) AS event_count,
   SUM(user_count) AS user_count,
   SUM(issues_count) AS issues_count,
@@ -52,4 +55,4 @@ SELECT
   SUM(total_event_count) AS total_event_count
 
 FROM time_granularity
-GROUP BY 1, 2, 3, 4, 5, 6, 7
+GROUP BY 1, 2, 3, 4, 5, 6, 7, 8

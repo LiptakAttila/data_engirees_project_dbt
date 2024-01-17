@@ -1,6 +1,6 @@
 WITH time_granularity AS (
   SELECT
-    EXTRACT(DAY FROM created_at_datetime_utc) AS day,
+    date_trunc(DATE(created_at_datetime_utc), DAY) as day,
     EXTRACT(MONTH FROM created_at_datetime_utc) AS month,
     EXTRACT(QUARTER FROM created_at_datetime_utc) AS quarter,
     EXTRACT(YEAR FROM created_at_datetime_utc) AS year,

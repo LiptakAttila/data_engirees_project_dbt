@@ -1,5 +1,6 @@
 WITH time_granularity AS (
   SELECT
+    date_trunc(DATE(creation_date_datetime_utc), QUARTER) as day,
     EXTRACT(QUARTER FROM creation_date_datetime_utc) AS quarter,
     EXTRACT(YEAR FROM creation_date_datetime_utc) AS year,
     organization,
@@ -18,7 +19,7 @@ WITH time_granularity AS (
     MAX(last_activity_date_datetime_utc) AS last_activity_datetime_utc,
     MAX(last_edit_date_datetime_utc) AS last_edit_datetime_utc
   FROM {{ ref('int_stackoverflow_questions') }}
-  GROUP BY 1, 2, 3
+  GROUP BY 1, 2, 3, 4
 )
 SELECT
     {{ dbt_utils.generate_surrogate_key (

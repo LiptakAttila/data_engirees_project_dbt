@@ -1,7 +1,7 @@
 with time_granularity as (
     select
 
-        extract(day from creation_date_datetime_utc) as day,
+        date_trunc(DATE(creation_date_datetime_utc), DAY) as day,
         extract(month from creation_date_datetime_utc) as month,
         extract(quarter from creation_date_datetime_utc) as quarter,
         extract(year from creation_date_datetime_utc) as year,
